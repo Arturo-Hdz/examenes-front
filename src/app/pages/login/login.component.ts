@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ loginData = {
   "password":''
 }
 
-  constructor(private snack:MatSnackBar) { }
+  constructor(private snack:MatSnackBar, private loginService:LoginService) { }
 
   ngOnInit(): void {
   }
@@ -34,5 +35,17 @@ loginData = {
       return;
     }
 
+    this.loginService.generateToken(this.loginData).subscribe(
+      (data:any) => {
+          console.log(data);
+
+          this.loginService.loginUser(data.token);
+          this.loginService.getCurrentUser().subscribe((user:any) => {
+            console.log(user);
+          })
+      },(error) => {
+        console.log(error);
+      }
+    )
   }
 }
