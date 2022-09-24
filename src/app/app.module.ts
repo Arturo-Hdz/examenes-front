@@ -18,6 +18,8 @@ import {MatCardModule} from '@angular/material/card';
 import {MatToolbarModule} from '@angular/material/toolbar'; 
 import {MatIconModule} from '@angular/material/icon'; 
 import {MatListModule} from '@angular/material/list'; 
+import {MatSlideToggleModule} from '@angular/material/slide-toggle'; 
+import {MatSelectModule} from '@angular/material/select'; 
 
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './pages/home/home.component';
@@ -29,6 +31,8 @@ import { SidebarComponent } from './pages/admin/sidebar/sidebar.component';
 import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
 import { ViewCategoriasComponent } from './pages/admin/view-categorias/view-categorias.component';
 import { AddCategoriaComponent } from './pages/admin/add-categoria/add-categoria.component';
+import { ViewExamenesComponent } from './pages/admin/view-examenes/view-examenes.component';
+import { AddExamenComponent } from './pages/admin/add-examen/add-examen.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +47,9 @@ import { AddCategoriaComponent } from './pages/admin/add-categoria/add-categoria
     SidebarComponent,
     WelcomeComponent,
     ViewCategoriasComponent,
-    AddCategoriaComponent
+    AddCategoriaComponent,
+    ViewExamenesComponent,
+    AddExamenComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +64,9 @@ import { AddCategoriaComponent } from './pages/admin/add-categoria/add-categoria
     MatCardModule,
     MatToolbarModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    MatSlideToggleModule,
+    MatSelectModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

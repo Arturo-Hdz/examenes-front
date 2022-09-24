@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddCategoriaComponent } from './pages/admin/add-categoria/add-categoria.component';
+import { AddExamenComponent } from './pages/admin/add-examen/add-examen.component';
 import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
 import { ViewCategoriasComponent } from './pages/admin/view-categorias/view-categorias.component';
+import { ViewExamenesComponent } from './pages/admin/view-examenes/view-examenes.component';
 import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -48,6 +50,14 @@ const routes: Routes = [
     {
       path:'add-categoria',
       component:AddCategoriaComponent
+    },
+    {
+      path:'examenes',
+      component:ViewExamenesComponent
+    },
+    {
+      path:'add-examen',
+      component:AddExamenComponent
     }
       
     ]
