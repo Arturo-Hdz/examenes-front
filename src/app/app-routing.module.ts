@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ActualizarExamenComponent } from './pages/admin/actualizar-examen/actualizar-examen.component';
 import { AddCategoriaComponent } from './pages/admin/add-categoria/add-categoria.component';
 import { AddExamenComponent } from './pages/admin/add-examen/add-examen.component';
 import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
@@ -58,6 +59,10 @@ const routes: Routes = [
     {
       path:'add-examen',
       component:AddExamenComponent
+    },
+    {
+      path:'examen/:examenId',
+      component:ActualizarExamenComponent
     }
       
     ]

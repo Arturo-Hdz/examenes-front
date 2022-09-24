@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Route, Router } from '@angular/router';
 import { CategoriaService } from 'src/app/services/categoria.service';
+import { ExamenService } from 'src/app/services/examen.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -22,7 +25,12 @@ examenData = {
   }
 }
 
-  constructor(private categoriaService:CategoriaService) { }
+  constructor(
+    private categoriaService:CategoriaService, 
+    private snack:MatSnackBar,
+    private examenService:ExamenService,
+    private router:Router
+    ) { }
 
   ngOnInit(): void {
   this.categoriaService.listarCategorias().subscribe(
@@ -34,5 +42,35 @@ examenData = {
       Swal.fire('Error!!','Error al cargar los datos','error');
     }
   )
+  }
+  guardarCuestionario(){
+    console.log(this.examenData);
+    if(this.examenData.titulo.trim() == '' || this.examenData.titulo == null){
+      this.snack.open('El titulo es requerido','',{
+        duration:3000
+      });
+      return ;
+    }
+
+    this.examenService.agregarExamen(this.examenData).subscribe(
+      (data) => {
+        console.log(data);
+        Swal.fire('Examen guardado','El examen ha sido guardado con exito','success');
+        this.examenData = {
+          titulo:'',
+          descripcion:'',
+          puntosMaximos:'',
+          numeroDePreguntas:'',
+          activo:true,
+          categoria:{
+            categoriaId:''
+          }
+        }
+        this.router.navigate(['/admin/examenes']);
+      },
+      (error) =>{
+        Swal.fire('Error','Error al guardar el examen', 'error');
+      }
+    )
   }
 }

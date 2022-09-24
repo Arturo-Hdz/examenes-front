@@ -24,4 +24,29 @@ export class ViewExamenesComponent implements OnInit {
       Swal.fire('Error','Error al cargar los examenes','error');
     })
     }
+
+    eliminarExamen(examenId:any){
+      Swal.fire({
+        title:'Eliminar Examen',
+        text:'Estas seguro de eliminar el examen?',
+        icon:'warning',
+        showCancelButton:true,
+        confirmButtonColor:'#3085d6',
+        cancelButtonColor:'#d33',
+        confirmButtonText:'Eliminar',
+        cancelButtonText:'Cancelar'
+      }).then((result) => {
+        if(result.isConfirmed){
+          this.examenService.eliminarExamen(examenId).subscribe(
+            (data) => {
+              this.examenes = this.examenes.filter((examen:any) => examen.examenId != examenId);
+              Swal.fire('Examen eliminado','El examen ha sido eliminado','success');
+            },
+            (error) => {
+              Swal.fire('Error','Error al elimnar el examen','error');
+            }
+          )
+        }
+      })
+    }
   }
