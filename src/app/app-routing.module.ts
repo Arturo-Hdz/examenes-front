@@ -14,7 +14,9 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { SignupComponent } from './pages/signup/signup.component';
+import { InstruccionesComponent } from './pages/user/instrucciones/instrucciones.component';
 import { LoadExamenComponent } from './pages/user/load-examen/load-examen.component';
+import { StartComponent } from './pages/user/start/start.component';
 import { UserDashboardComponent } from './pages/user/user-dashboard/user-dashboard.component';
 import { AdminGuard } from './services/admin.guard';
 import { NormalGuard } from './services/normal.guard';
@@ -92,10 +94,18 @@ const routes: Routes = [
     {
       path: ':catId',
       component:LoadExamenComponent
+    },
+    {
+      path: 'instrucciones/:examenId',
+      component:InstruccionesComponent
     }
-
     ]
-  },
+    },
+    {
+      path: 'start/:examenId',
+      component:StartComponent,
+      canActivate:[NormalGuard] 
+  }
 ];
 
 @NgModule({

@@ -28,4 +28,8 @@ export class PreguntaService {
   public obtenerPregunta(preguntaId:any){
     return this.http.get(`${baserUrl}/pregunta/${preguntaId}`);
   }
+
+  public listarPreguntasDelExamenParaLaPrueba(examenId:any){
+    return this.http.get(`${baserUrl}/pregunta/examen/todos/${examenId}`);
+  }
 }
