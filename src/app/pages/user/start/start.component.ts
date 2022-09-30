@@ -85,7 +85,19 @@ export class StartComponent implements OnInit {
   }
 
   evaluarExamen(){
-    this.esEnviado = true;
+    this.preguntaService.evaluarExamen(this.preguntas).subscribe(
+      (data:any) => {
+        console.log(data);
+        this.puntosConseguidos = data.puntosMaximos;
+        this.respuestasCorrectas = data.respuestasCorrectas;
+        this.intentos = data.intentos;
+        this.esEnviado = true;
+      },
+      (error) => {
+        console.log(error)
+      }
+    )
+   /* this.esEnviado = true;
         this.preguntas.forEach((p:any) => {
           if(p.respuestaDada == p.respuesta){
             this.respuestasCorrectas ++;
@@ -99,13 +111,17 @@ export class StartComponent implements OnInit {
         console.log("Respuestas correctas : " + this.respuestasCorrectas);
         console.log("Puntos conseguidos : " + this.puntosConseguidos);
         console.log("Intentos : " + this.intentos);
-        console.log(this.preguntas);
+        console.log(this.preguntas); */
   }
 
   obtenerHoraFormateada(){
     let mm = Math.floor(this.timer/60);
     let ss = this.timer - mm*60;
     return `${mm} : min : ${ss} seg`;
+  }
+
+  imprimirPagina(){
+    window.print();
   }
 
 }

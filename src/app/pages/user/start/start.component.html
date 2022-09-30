@@ -2,9 +2,19 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-2">
-                <h3>Instrucciones</h3>
+                <mat-card style="margin-top: 70px;">
+                    <mat-card-content>
+                        <h3><b>Instrucciones</b></h3>
+                        <ul>
+                            <li>No actualice la pagina, de lo contrario obtendra nuevas preguntas en este cuestionario</li>
+                            <li>No cambies las pestanas</li>
+                            <li>No minimices la ventana</li>
+                        </ul>
+                    </mat-card-content>
+
+                </mat-card>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-7">
                 <!-- preguntas -->
                 <ng-container *ngIf= "preguntas">
                     <h1 class="mt20">En curso <b>{{ preguntas[0].examen.titulo }}</b></h1>
@@ -63,7 +73,7 @@
 </div>
 
 <div class="bootstrap-wrapper" *ngIf= "esEnviado">
-    <div class="row mt20">
+    <div class="container mt20">
         <div class="col-md-6 offset-md-3">
             <mat-card-header>
                 <mat-card-title>
@@ -71,11 +81,12 @@
                 </mat-card-title>
             </mat-card-header>
             <mat-card-content class="text-center">
+                <h1></h1>
                 <h1>Puntos conseguidos : {{ puntosConseguidos }}</h1>
                 <h1>Respuestas Correctas : {{ respuestasCorrectas }}</h1>
             </mat-card-content>
             <mat-card-actions class="text-center">
-                <button mat-raised-button color="primary">Imprimir</button>
+                <button (click)= "imprimirPagina()" mat-raised-button color="primary">Imprimir</button>
                 <button mat-raised-button color="accent" [routerLink]= "'/user-dashboard/0'">Inicio</button>
             </mat-card-actions>
         </div>
