@@ -20,6 +20,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list'; 
 import {MatSlideToggleModule} from '@angular/material/slide-toggle'; 
 import {MatSelectModule} from '@angular/material/select'; 
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'; 
 
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './pages/home/home.component';
@@ -82,7 +83,8 @@ import { StartComponent } from './pages/user/start/start.component';
     MatIconModule,
     MatListModule,
     MatSlideToggleModule,
-    MatSelectModule
+    MatSelectModule,
+    MatProgressSpinnerModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
